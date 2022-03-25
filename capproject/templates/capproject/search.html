@@ -1,0 +1,22 @@
+{% extends "capproject/base.html" %}
+{%block content%}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <form action="{% url 'search' %}" method="get" class="d-flex" >
+        {%csrf_token%}
+        <input class="form-control me-2" type="search" name="query" placeholder="search">
+        <button class="btn btn-outline-success" type="submit" >Search Product</button>
+      </form>
+    </div>
+  </div>
+</div>
+<p>
+  {% for product in products %}
+  {{product.name}}
+  {{product.image.url}}
+  {% endfor %}
+</p>
+
+
+{% endblock content %}
